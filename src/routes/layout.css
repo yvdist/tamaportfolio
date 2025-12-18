@@ -1,1 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
+
+@theme {
+  --color-cream: #faf9f7;
+  --color-sand: #e8e6e3;
+  --color-warmgray: #a39e99;
+  --color-charcoal: #3d3935;
+}
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    @apply bg-cream text-charcoal;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+  
+  h1, h2, h3 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
