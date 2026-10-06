@@ -1,29 +1,32 @@
 <script lang="ts">
-	// 
+	import { profile } from '$lib/data/profile';
 </script>
 
-<section class="relative h-screen w-full overflow-hidden">
+<section class="relative h-svh w-full overflow-hidden">
 	<img
-		src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=2000&q=80"
-		alt="hero"
+		src="/images/hero.webp"
+		alt=""
+		width="2000"
+		height="1333"
+		fetchpriority="high"
 		class="h-full w-full object-cover"
 	/>
-	<div class="absolute inset-0 bg-linear-to-b from-black/40 via-black/20 to-black/50"></div>
+	<div class="absolute inset-0 bg-linear-to-b from-black/45 via-black/25 to-black/55"></div>
 
 	<div
 		class="absolute inset-0 flex flex-col items-center justify-center px-8 text-center text-white"
 	>
-		<h1 class="mb-6 font-serif text-[48px] leading-[1.2] tracking-wide md:text-[72px]">
+		<p lang="ja" class="mb-8 font-mincho text-[13px] tracking-[0.5em] opacity-80">
 			ソフトウェアエンジニア
-		</h1>
-		<p class="mb-12 text-[11px] tracking-[0.3em] opacity-90 md:text-[12px]">
-			software engineer based in indonesia
 		</p>
+		<h1 class="mb-6 font-serif text-[40px] leading-[1.15] md:text-[68px]">{profile.name}</h1>
+		<p class="mb-3 text-[13px] tracking-[0.25em] uppercase md:text-[14px]">{profile.role}</p>
+		<p class="mb-12 text-[12px] tracking-[0.18em] opacity-85 md:text-[13px]">{profile.focus}</p>
 		<a
-			href="#about"
-			class="border border-white/40 px-8 py-3 text-[9px] tracking-[0.3em] uppercase backdrop-blur-sm transition-all hover:bg-white/10"
+			href="#works"
+			class="border border-white/40 px-8 py-3 text-[11px] tracking-[0.3em] uppercase backdrop-blur-sm transition-all hover:bg-white/10"
 		>
-			more
+			selected work
 		</a>
 	</div>
 </section>

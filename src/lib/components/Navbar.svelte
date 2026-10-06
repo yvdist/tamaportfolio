@@ -1,67 +1,58 @@
 <script lang="ts">
-	import { onMount } from "svelte";
+	import { resolve } from '$app/paths';
+	import { profile } from '$lib/data/profile';
 
-	let menuOpen: boolean = false;
-	let scrolled: boolean = false;
+	let { solid = false }: { solid?: boolean } = $props();
 
-	onMount(() => {
-		const handleScroll = () => {
-			scrolled = window.scrollY > 100;
-		};
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	});
+	let menuOpen = $state(false);
+	let scrollY = $state(0);
+
+	const filled = $derived(solid || scrollY > 100);
+
+	const links = [
+		{ hash: '#about', label: 'about' },
+		{ hash: '#experience', label: 'experience' },
+		{ hash: '#works', label: 'works' },
+		{ hash: '#contact', label: 'contact' }
+	];
 </script>
 
+<svelte:window bind:scrollY />
+
 <nav
-	class="fixed top-0 z-50 w-full transition-all duration-500 {scrolled
+	class="fixed top-0 z-50 w-full transition-all duration-500 {filled
 		? 'bg-cream/95 backdrop-blur-sm'
 		: 'bg-transparent'}"
 >
-	<div class="mx-auto flex max-w-[1600px] items-center justify-between px-8 py-8 md:px-16">
+	<div class="mx-auto flex max-w-[1600px] items-center justify-between px-8 py-7 md:px-16">
 		<a
-			href="/"
-			class="text-[10px] tracking-[0.3em] {scrolled
+			href={resolve('/')}
+			class="text-[12px] tracking-[0.3em] transition-opacity hover:opacity-70 {filled
 				? 'text-charcoal'
-				: 'text-white'} transition-opacity hover:opacity-70"
+				: 'text-white'}"
 		>
-			yudistira eka pratama
+			{profile.name.toLowerCase()}
 		</a>
 
-		<div class="hidden items-center gap-12 md:flex">
-			<div class="flex gap-10 text-[9px] tracking-[0.3em] uppercase">
+		<div class="hidden gap-10 text-[11px] tracking-[0.3em] uppercase md:flex">
+			{#each links as link (link.hash)}
 				<a
-					href="#about"
-					class="{scrolled
-						? 'text-charcoal/60'
-						: 'text-white/80'} transition-opacity hover:opacity-100">about</a
+					href="{resolve('/')}{link.hash}"
+					class="transition-opacity hover:opacity-100 {filled
+						? 'text-charcoal/70'
+						: 'text-white/85'}"
 				>
-				<a
-					href="#works"
-					class="{scrolled
-						? 'text-charcoal/60'
-						: 'text-white/80'} transition-opacity hover:opacity-100">works</a
-				>
-				<a
-					href="#contact"
-					class="{scrolled
-						? 'text-charcoal/60'
-						: 'text-white/80'} transition-opacity hover:opacity-100">contact</a
-				>
-			</div>
-			<a
-				href="#contact"
-				class="border px-6 py-2 {scrolled
-					? 'border-charcoal/20 text-charcoal/60'
-					: 'border-white/30 text-white'} text-[9px] tracking-[0.25em] uppercase transition-all hover:bg-white/10"
-			>
-				get in touch
-			</a>
+					{link.label}
+				</a>
+			{/each}
 		</div>
 
 		<button
-			on:click={() => (menuOpen = !menuOpen)}
-			class="text-[9px] tracking-[0.3em] uppercase md:hidden {scrolled
+			type="button"
+			aria-expanded={menuOpen}
+			aria-controls="mobile-menu"
+			onclick={() => (menuOpen = !menuOpen)}
+			class="text-[11px] tracking-[0.3em] uppercase md:hidden {filled
 				? 'text-charcoal'
 				: 'text-white'}"
 		>
@@ -70,23 +61,17 @@
 	</div>
 
 	{#if menuOpen}
-		<div class="bg-cream border-warmgray/10 border-t px-8 py-10 md:hidden">
-			<div class="flex flex-col gap-6 text-center text-[10px] tracking-[0.3em] uppercase">
-				<a
-					href="#about"
-					on:click={() => (menuOpen = false)}
-					class="text-charcoal/60 hover:text-charcoal">about</a
-				>
-				<a
-					href="#works"
-					on:click={() => (menuOpen = false)}
-					class="text-charcoal/60 hover:text-charcoal">works</a
-				>
-				<a
-					href="#contact"
-					on:click={() => (menuOpen = false)}
-					class="text-charcoal/60 hover:text-charcoal">contact</a
-				>
+		<div id="mobile-menu" class="border-t border-warmgray/10 bg-cream px-8 py-10 md:hidden">
+			<div class="flex flex-col gap-6 text-center text-[12px] tracking-[0.3em] uppercase">
+				{#each links as link (link.hash)}
+					<a
+						href="{resolve('/')}{link.hash}"
+						onclick={() => (menuOpen = false)}
+						class="text-charcoal/70 hover:text-charcoal"
+					>
+						{link.label}
+					</a>
+				{/each}
 			</div>
 		</div>
 	{/if}

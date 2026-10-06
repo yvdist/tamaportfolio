@@ -1,33 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 @theme {
-  --color-cream: #faf9f7;
-  --color-sand: #e8e6e3;
-  --color-warmgray: #a39e99;
-  --color-charcoal: #3d3935;
+	--color-cream: #faf9f7;
+	--color-sand: #e8e6e3;
+	--color-warmgray: #a39e99;
+	--color-charcoal: #3d3935;
+
+	--font-serif: 'EB Garamond', 'Shippori Mincho', 'Times New Roman', serif;
+	--font-mincho: 'Shippori Mincho', 'EB Garamond', serif;
 }
 
 @layer base {
-  * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  body {
-    @apply bg-cream text-charcoal;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    font-size: 14px;
-    line-height: 1.8;
-    letter-spacing: 0.02em;
-  }
-  
-  h1, h2, h3 {
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: 400;
-  }
+	* {
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	html {
+		scroll-behavior: smooth;
+	}
+
+	body {
+		@apply bg-cream text-charcoal;
+		font-family: 'Helvetica Neue', Arial, sans-serif;
+		font-size: 15px;
+		line-height: 1.8;
+		letter-spacing: 0.02em;
+	}
+
+	h1,
+	h2,
+	h3 {
+		font-family: var(--font-serif);
+		font-weight: 400;
+	}
+
+	:focus-visible {
+		outline: 1px solid var(--color-charcoal);
+		outline-offset: 4px;
+	}
 }
 
-html {
-  scroll-behavior: smooth;
+.reveal {
+	opacity: 0;
+	transform: translateY(12px);
+	transition:
+		opacity 1.2s ease,
+		transform 1.2s ease;
+}
+
+.reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
 }

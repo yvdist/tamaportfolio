@@ -1,30 +1,24 @@
 <script lang="ts">
-    //
+	import { reveal } from '$lib/actions/reveal';
+	import { profile } from '$lib/data/profile';
 </script>
 
 <section id="about" class="px-8 py-32 md:py-40">
-	<div class="mx-auto max-w-[900px] space-y-12 text-center">
-		<!-- <p class="text-charcoal/80 font-serif text-[15px] leading-[2.4] md:text-[16px]">
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure nam nulla autem deserunt nostrum. Iste inventore, temporibus praesentium voluptates reiciendis quos voluptatum tenetur quas ipsum vitae? Aliquam numquam incidunt alias.
-		</p> -->
-
-		<div class="pt-8">
-			<h2 class="text-charcoal/40 mb-12 text-[11px] tracking-[0.3em] uppercase">about me</h2>
-			<p class="text-charcoal/70 mx-auto max-w-[750px] text-[13px] leading-[2.6]">
-				I'm Yudistira Eka Pratama, a software engineer who believes in crafting digital experiences<br
-					class="hidden md:block"
-				/>
-				with the same care and attention an artist gives to their work.<br /><br />
-
-				My journey began with curiosity about how things work beneath the surface,<br
-					class="hidden md:block"
-				/>
-				evolving into a passion for building systems that are both elegant and functional.<br /><br
-				/>
-
-				When not immersed in code, I find inspiration in music, photography, and the quiet beauty of
-				everyday moments.
-			</p>
+	<div use:reveal class="mx-auto max-w-[720px] text-center">
+		<h2 class="mb-12 font-sans text-[11px] tracking-[0.3em] text-charcoal/60 uppercase">about</h2>
+		<div class="space-y-8">
+			{#each profile.about as paragraph, i (i)}
+				<p
+					class={i === 0
+						? 'font-serif text-[20px] leading-[1.8] text-charcoal/90 md:text-[22px]'
+						: 'text-[15px] leading-[2.1] text-charcoal/70'}
+				>
+					{paragraph}
+				</p>
+			{/each}
 		</div>
+		<p class="mt-12 text-[11px] tracking-[0.3em] text-charcoal/60 uppercase">
+			{profile.location}
+		</p>
 	</div>
 </section>
