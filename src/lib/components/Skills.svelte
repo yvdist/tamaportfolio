@@ -1,24 +1,23 @@
 <script lang="ts">
-	// 
+	import { reveal } from '$lib/actions/reveal';
+	import { skills } from '$lib/data/skills';
 </script>
 
-<section class="py-32 px-8">
-  <div class="max-w-[900px] mx-auto">
-	<p class="text-charcoal/40 mb-16 text-center text-[11px] tracking-[0.3em] uppercase md:mb-20">
-		tech stack
-	</p>
-	
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      {#each [
-        'JavaScript', 'TypeScript', 'React', 'SvelteKit',
-        'Node.js', 'Python', 'PostgreSQL', 'MongoDB',
-        'Docker', 'Kubernetes', 'AWS', 'Git',
-        'GraphQL', 'REST API', 'Redis', 'WebSocket'
-      ] as tech}
-        <div class="py-4">
-          <p class="text-[10px] tracking-[0.2em] text-charcoal/60">{tech}</p>
-        </div>
-      {/each}
-    </div>
-  </div>
+<section class="px-8 py-32">
+	<div class="mx-auto max-w-[960px]">
+		<h2 class="mb-20 text-center font-sans text-[11px] tracking-[0.3em] text-charcoal/60 uppercase">
+			stack
+		</h2>
+
+		<dl class="divide-y divide-warmgray/20">
+			{#each skills as group (group.label)}
+				<div use:reveal class="grid gap-3 py-7 md:grid-cols-[200px_1fr] md:gap-12">
+					<dt class="text-[11px] tracking-[0.3em] text-charcoal/60 uppercase md:pt-1">
+						{group.label}
+					</dt>
+					<dd class="text-[15px] leading-[1.9] text-charcoal/80">{group.items.join(' · ')}</dd>
+				</div>
+			{/each}
+		</dl>
+	</div>
 </section>

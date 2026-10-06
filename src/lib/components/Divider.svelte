@@ -1,14 +1,13 @@
-<script lang="ts">
-    //
-</script>
-
-<section class="px-8 py-20">
+<section class="px-8 py-20" aria-hidden="true">
 	<div class="mx-auto max-w-[1400px]">
-		<div class="bg-sand/50 aspect-21/9 overflow-hidden">
+		<div class="aspect-21/9 overflow-hidden bg-sand/50">
 			<img
-				src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1600&q=80"
-				alt="divider"
-				class="h-full w-full object-cover opacity-75"
+				src="/images/divider.webp"
+				alt=""
+				width="1680"
+				height="720"
+				loading="lazy"
+				class="h-full w-full object-cover opacity-80 saturate-[0.85]"
 			/>
 		</div>
 	</div>
