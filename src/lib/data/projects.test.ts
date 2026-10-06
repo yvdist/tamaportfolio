@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { alsoBuilt, getProject, projects } from './projects';
 
@@ -47,5 +48,11 @@ describe('projects data', () => {
 	it('keeps secondary links external', () => {
 		expect(alsoBuilt.length).toBe(2);
 		for (const a of alsoBuilt) expect(a.url).toMatch(/^https:\/\//);
+	});
+
+	it('has a cover image file for every project', () => {
+		for (const p of projects) {
+			expect(existsSync(`static${p.cover}`), p.cover).toBe(true);
+		}
 	});
 });
