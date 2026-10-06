@@ -1,38 +1,60 @@
-# sv
+# tama-portfolio
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Personal portfolio of Yudistira Eka Pratama, senior software engineer in South Jakarta.
 
-## Creating a project
+Live at [tamaportfolio.vercel.app](https://tamaportfolio.vercel.app).
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Stack
 
-```sh
-# create a new project in the current directory
-npx sv create
+SvelteKit 2, Svelte 5, TypeScript and Tailwind CSS v4. Every route is prerendered and deployed to Vercel. Fonts and images are served from the repository, so the site makes no third-party requests.
 
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Develop
 
 ```sh
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+| Command           | What it does                          |
+| ----------------- | ------------------------------------- |
+| `npm run dev`     | Start the dev server                  |
+| `npm run build`   | Build and prerender the site          |
+| `npm run preview` | Serve the production build            |
+| `npm run check`   | Type-check with `svelte-check`        |
+| `npm run lint`    | Check formatting and run ESLint       |
+| `npm run format`  | Format with Prettier                  |
+| `npm test`        | Run the data integrity tests (Vitest) |
+| `npm run cv`      | Build the CV PDFs from `cv/cv.html`   |
 
-To create a production version of your app:
+## Editing content
+
+All copy lives in `src/lib/data/`. Components only render it.
+
+| File            | Holds                                   |
+| --------------- | --------------------------------------- |
+| `profile.ts`    | Name, role, about text, contact links   |
+| `experience.ts` | Work history                            |
+| `skills.ts`     | Tech stack, grouped                     |
+| `projects.ts`   | Case studies and the "also built" links |
+
+### Add a case study
+
+1. Append an entry to `projects` in `src/lib/data/projects.ts`.
+2. Add a 1200×900 cover at `static/images/work-<name>.webp`.
+3. For a personal project, optionally add 1440×900 screenshots under `static/images/` and list them in `shots`.
+
+The home card, the `/work/<slug>` page and the sitemap entry are generated from that entry. `npm test` fails if a referenced image is missing.
+
+### CV
+
+The CV is written once in `cv/cv.html` and printed to PDF with the locally installed Chrome:
 
 ```sh
-npm run build
+npm run cv
 ```
 
-You can preview the production build with `npm run preview`.
+This writes the public copy to `static/cv.pdf`, which makes the "download cv" button appear on the next build. Contact details wrapped in `<span data-private>` are left out of the public copy. If `.hiddendocs/cv-private.json` exists (`{ "phone": "..." }`, git-ignored), a second copy with the phone number is written to `.hiddendocs/cv/` for job applications.
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Photographs
+
+Atmospheric photographs are from [Unsplash](https://unsplash.com).
