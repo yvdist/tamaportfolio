@@ -5,7 +5,7 @@
 
 <section id="about" class="px-8 py-32 md:py-40">
 	<div use:reveal class="mx-auto max-w-[720px] text-center">
-		<h2 class="mb-12 font-sans text-[11px] tracking-[0.3em] text-charcoal/60 uppercase">about</h2>
+		<h2 class="mb-12 font-sans text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">about</h2>
 		<div class="space-y-8">
 			{#each profile.about as paragraph, i (i)}
 				<p
@@ -17,7 +17,7 @@
 				</p>
 			{/each}
 		</div>
-		<p class="mt-12 text-[11px] tracking-[0.3em] text-charcoal/60 uppercase">
+		<p class="mt-12 text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">
 			{profile.location}
 		</p>
 	</div>

@@ -1,3 +1,5 @@
+import { photo } from './photos';
+
 export interface Project {
 	slug: string;
 	kind: 'professional' | 'personal';
@@ -44,7 +46,7 @@ export const projects: Project[] = [
 			'Wayfinding in 2D and 3D across seven floors, from kiosks and phones.',
 			'Routing, geometry and the editors are covered by PHPUnit and Vitest suites.'
 		],
-		cover: '/images/work-directory.webp'
+		cover: photo('work-directory.webp')
 	},
 	{
 		slug: 'hris-platform',
@@ -66,7 +68,7 @@ export const projects: Project[] = [
 			'Supports around 80 employees.',
 			'Attendance, leave, KPIs, payslips, org chart and profiles live in a single platform.'
 		],
-		cover: '/images/work-hris.webp'
+		cover: photo('work-hris.webp')
 	},
 	{
 		slug: 'recruitment-platform',
@@ -84,7 +86,7 @@ export const projects: Project[] = [
 			'Introduced AI-powered CV parsing that extracts candidate biodata, work history and skills from uploaded documents automatically.'
 		],
 		outcome: ['Shipped and currently live in production.'],
-		cover: '/images/work-recruitment.webp'
+		cover: photo('work-recruitment.webp')
 	},
 	{
 		slug: 'mall-ai-helper',
@@ -107,7 +109,7 @@ export const projects: Project[] = [
 			'Used by shoppers and staff alongside the directory.',
 			'Grounding answers in documents reduced hallucinated replies.'
 		],
-		cover: '/images/work-mall.webp'
+		cover: photo('work-mall.webp')
 	},
 	{
 		slug: 'petakin',
@@ -140,7 +142,7 @@ export const projects: Project[] = [
 				alt: 'Petakin manual mapping editor with drawing tools, floor tabs, categories and a layers panel'
 			}
 		],
-		cover: '/images/work-petakin.webp'
+		cover: photo('work-petakin.webp')
 	},
 	{
 		slug: 'kikoeru-lab',
@@ -177,7 +179,7 @@ export const projects: Project[] = [
 				alt: 'Kikoeru Lab dashboard listing ranked ideas with status, effort and source filters'
 			}
 		],
-		cover: '/images/work-kikoeru.webp'
+		cover: photo('work-kikoeru.webp')
 	}
 ];
 

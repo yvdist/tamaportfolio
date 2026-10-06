@@ -1,5 +1,6 @@
 import { existsSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { photo, PHOTO_SET } from './photos';
 import { alsoBuilt, getProject, projects } from './projects';
 
 describe('projects data', () => {
@@ -31,7 +32,7 @@ describe('projects data', () => {
 			expect(p.approach.length, p.slug).toBeGreaterThan(0);
 			expect(p.outcome.length, p.slug).toBeGreaterThan(0);
 			expect(p.stack.length, p.slug).toBeGreaterThan(0);
-			expect(p.cover, p.slug).toMatch(/^\/images\/work-[a-z-]+\.webp$/);
+			expect(p.cover, p.slug).toBe(photo(p.cover.split('/').pop() ?? ''));
 		}
 	});
 
@@ -79,6 +80,18 @@ describe('projects data', () => {
 		const directory = JSON.stringify(getProject('interactive-mall-directory'));
 		for (const banned of ['A*', 'turn-by-turn', 'role-based', 'offline', 'Docker']) {
 			expect(directory.includes(banned), banned).toBe(false);
+		}
+	});
+
+	it('has every photograph the active photo set needs', () => {
+		for (const name of ['hero.webp', 'interlude.webp', 'divider.webp']) {
+			expect(existsSync(`static${photo(name)}`), `${PHOTO_SET}/${name}`).toBe(true);
+		}
+	});
+
+	it('has a social preview image for every case study', () => {
+		for (const p of projects) {
+			expect(existsSync(`static/og/${p.slug}.png`), p.slug).toBe(true);
 		}
 	});
 });

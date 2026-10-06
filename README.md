@@ -25,6 +25,7 @@ npm run dev
 | `npm run format`  | Format with Prettier                  |
 | `npm test`        | Run the data integrity tests (Vitest) |
 | `npm run cv`      | Build the CV PDFs from `cv/cv.html`   |
+| `npm run og`      | Render social preview images          |
 
 ## Editing content
 
@@ -40,10 +41,24 @@ All copy lives in `src/lib/data/`. Components only render it.
 ### Add a case study
 
 1. Append an entry to `projects` in `src/lib/data/projects.ts`.
-2. Add a 1200×900 cover at `static/images/work-<name>.webp`.
+2. Add a 1200×900 cover named `work-<name>.webp` to the active photo set and reference it as `photo('work-<name>.webp')`.
 3. For a personal project, optionally add 1440×900 screenshots under `static/images/` and list them in `shots`.
+4. Run `npm run og` to render its social preview image.
 
 The home card, the `/work/<slug>` page and the sitemap entry are generated from that entry. `npm test` fails if a referenced image is missing.
+
+### Switch the photographs
+
+The atmospheric photographs come in sets under `static/images/sets/`. Each set holds the same file names:
+
+| File                      | Size      | Used for               |
+| ------------------------- | --------- | ---------------------- |
+| `hero.webp`               | 2000×1333 | Home hero              |
+| `interlude.webp`          | 2000×1125 | Full-width pause       |
+| `divider.webp`            | 1680×720  | Divider before contact |
+| `work-<name>.webp` (each) | 1200×900  | Case-study covers      |
+
+To use your own photographs, put them in `static/images/sets/own/` under those names and set `PHOTO_SET` to `'own'` in `src/lib/data/photos.ts`. The footer credit follows the set. `npm test` reports any file the active set is missing.
 
 ### CV
 
@@ -57,4 +72,4 @@ This writes the public copy to `static/cv.pdf`, which makes the "download cv" bu
 
 ## Photographs
 
-Atmospheric photographs are from [Unsplash](https://unsplash.com).
+The default photo set is from [Unsplash](https://unsplash.com).

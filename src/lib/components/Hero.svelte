@@ -1,10 +1,11 @@
 <script lang="ts">
+	import { photo } from '$lib/data/photos';
 	import { profile } from '$lib/data/profile';
 </script>
 
 <section class="relative h-svh w-full overflow-hidden">
 	<img
-		src="/images/hero.webp"
+		src={photo('hero.webp')}
 		alt=""
 		width="2000"
 		height="1333"

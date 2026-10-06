@@ -1,8 +1,12 @@
+<script lang="ts">
+	import { photo } from '$lib/data/photos';
+</script>
+
 <section class="px-8 py-20" aria-hidden="true">
 	<div class="mx-auto max-w-[1400px]">
 		<div class="aspect-21/9 overflow-hidden bg-sand/50">
 			<img
-				src="/images/divider.webp"
+				src={photo('divider.webp')}
 				alt=""
 				width="1680"
 				height="720"

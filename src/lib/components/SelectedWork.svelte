@@ -7,7 +7,7 @@
 
 <section id="works" class="px-6 py-32 md:px-8 md:py-40">
 	<div class="mx-auto max-w-[1200px]">
-		<h2 class="mb-20 text-center font-sans text-[11px] tracking-[0.3em] text-charcoal/60 uppercase">
+		<h2 class="mb-20 text-center font-sans text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">
 			selected work
 		</h2>
 
@@ -28,7 +28,7 @@
 							class="h-full w-full object-cover opacity-90 saturate-[0.85] transition-all duration-700 group-hover:scale-[1.03] group-hover:opacity-100"
 						/>
 					</div>
-					<p class="mb-3 text-[11px] tracking-[0.3em] text-charcoal/60 uppercase">
+					<p class="mb-3 text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">
 						{project.kind === 'personal' ? 'personal project' : 'professional work'} · {project.period}
 					</p>
 					<h3 class="mb-3 font-serif text-[26px] leading-[1.3] text-charcoal/90">
@@ -36,7 +36,7 @@
 					</h3>
 					<p class="text-[15px] leading-[1.9] text-charcoal/70">{project.summary}</p>
 					<p
-						class="mt-5 text-[11px] tracking-[0.3em] text-charcoal/60 uppercase transition-colors group-hover:text-charcoal"
+						class="mt-5 text-[11px] tracking-[0.3em] text-charcoal/75 uppercase transition-colors group-hover:text-charcoal"
 					>
 						read case study
 					</p>
@@ -45,7 +45,7 @@
 		</div>
 
 		<div use:reveal class="mt-28 border-t border-warmgray/20 pt-12 text-center">
-			<p class="mb-8 text-[11px] tracking-[0.3em] text-charcoal/60 uppercase">also built</p>
+			<p class="mb-8 text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">also built</p>
 			<ul class="space-y-4">
 				{#each alsoBuilt as item (item.url)}
 					<li class="text-[15px]">
@@ -55,7 +55,7 @@
 						>
 							{item.title}
 						</ExternalLink>
-						<span class="text-charcoal/60"> · {item.note}</span>
+						<span class="text-charcoal/75"> · {item.note}</span>
 					</li>
 				{/each}
 			</ul>
