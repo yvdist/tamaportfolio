@@ -2,7 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Before changing content, read `.hiddendocs/PROJECT_LOG.md` if it exists. It is a local-only, git-ignored log of content decisions, their reasons and open items, and should be updated whenever something ships.
+Before changing content, read `.hiddendocs/PROJECT_LOG.md` if it exists. It is a log of content decisions, their reasons and open items, and should be updated whenever something ships.
+
+`.hiddendocs/` is ignored by this repository and is its own git repository with a private remote. After updating the log or anything else in that folder, commit it there (`git -C .hiddendocs add -A && git -C .hiddendocs commit -m "..."`) and ask the owner to push. On a fresh clone the folder is absent; the owner restores it by cloning the private repository into `.hiddendocs`.
 
 ## Commands
 
