@@ -10,6 +10,7 @@ export interface Project {
 	approach: string[];
 	outcome: string[];
 	links?: { demo?: string; repo: string };
+	shots?: { src: string; alt: string }[];
 	cover: string;
 }
 
@@ -111,21 +112,30 @@ export const projects: Project[] = [
 		summary: 'Turns raster mall floor plans into clean, editable SVG unit maps.',
 		period: '2026',
 		role: 'Design and engineering',
-		stack: ['Python', 'FastAPI', 'OpenCV', 'NumPy', 'Next.js', 'TypeScript', 'Tailwind CSS'],
+		stack: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Python', 'FastAPI', 'OpenCV'],
 		problem:
 			'Mall floor plans come as screenshots or PDF exports full of unit codes, facility icons and watermarks. Generic tracers follow the text and produce fragmented paths, and a mall has several floors that must all look identical.',
 		approach: [
-			'Segments the image per colour family: detect the palette, classify each pixel to its nearest colour within a tolerance, then extract connected components as units.',
-			'Fills small interior holes to remove text and icon remnants, then simplifies each contour into one polygon per unit.',
-			'Emits a grouped, transparent SVG with named paths per category, editable in a live browser editor with merge, delete and recolour.',
-			'Stores palette, parameters and badge in presets so every floor of a mall stays style-identical; batch mode exports a ZIP of SVG and PNG per floor.'
+			'A manual mapping editor sits on top of the vendor floor plan as an underlay: draw each unit with rectangle, ellipse or polygon tools, curves included, on a snap grid.',
+			'Units are organised into layers and categories, with one tab per floor and a uniform style across floors; work autosaves in the browser.',
+			'Export is pure vector: one path per unit, selectable in Figma, transparent, with no embedded raster image.',
+			'An automatic mode segments the plan per colour family with OpenCV to extract units without drawing. It is being rebuilt while segmentation and presets are tightened.'
 		],
 		outcome: [
-			'Validated on a five-floor mall: 101 units extracted on the busiest floor.',
-			'Under 10 seconds per image.',
-			'Runs locally with no third-party services.'
+			'Manual mapping is live in the browser.',
+			'Automatic extraction was validated on a five-floor mall: 101 units on the busiest floor, under 10 seconds per image.'
 		],
 		links: { demo: 'https://petakin.vercel.app', repo: 'https://github.com/yvdist/petakin' },
+		shots: [
+			{
+				src: '/images/shot-petakin-1.webp',
+				alt: 'Petakin landing page showing a colour-coded mall floor plan inside the mapping editor'
+			},
+			{
+				src: '/images/shot-petakin-2.webp',
+				alt: 'Petakin manual mapping editor with drawing tools, floor tabs, categories and a layers panel'
+			}
+		],
 		cover: '/images/work-petakin.webp'
 	},
 	{
@@ -153,6 +163,16 @@ export const projects: Project[] = [
 			demo: 'https://kikoeru-lab.vercel.app',
 			repo: 'https://github.com/yvdist/kikoeru-lab'
 		},
+		shots: [
+			{
+				src: '/images/shot-kikoeru-1.webp',
+				alt: 'Kikoeru Lab landing page with the line: ideas you can hear before they exist'
+			},
+			{
+				src: '/images/shot-kikoeru-2.webp',
+				alt: 'Kikoeru Lab dashboard listing ranked ideas with status, effort and source filters'
+			}
+		],
 		cover: '/images/work-kikoeru.webp'
 	}
 ];

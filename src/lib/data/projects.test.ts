@@ -55,4 +55,18 @@ describe('projects data', () => {
 			expect(existsSync(`static${p.cover}`), p.cover).toBe(true);
 		}
 	});
+
+	it('shows screenshots only for personal projects, and every file exists', () => {
+		for (const p of projects) {
+			if (p.kind === 'professional') {
+				expect(p.shots, p.slug).toBeUndefined();
+				continue;
+			}
+			expect(p.shots?.length, p.slug).toBeGreaterThan(0);
+			for (const shot of p.shots ?? []) {
+				expect(shot.alt.length, shot.src).toBeGreaterThan(10);
+				expect(existsSync(`static${shot.src}`), shot.src).toBe(true);
+			}
+		}
+	});
 });

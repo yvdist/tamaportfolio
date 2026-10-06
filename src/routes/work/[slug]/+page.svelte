@@ -53,6 +53,21 @@
 			</div>
 		</dl>
 
+		{#if project.shots}
+			<div class="mt-14 space-y-8">
+				{#each project.shots as shot (shot.src)}
+					<img
+						src={shot.src}
+						alt={shot.alt}
+						width="1440"
+						height="900"
+						loading="lazy"
+						class="w-full rounded-sm border border-warmgray/30"
+					/>
+				{/each}
+			</div>
+		{/if}
+
 		<section class="mt-16">
 			<h2 class="mb-6 font-sans text-[11px] tracking-[0.3em] text-charcoal/60 uppercase">
 				the problem

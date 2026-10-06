@@ -23,7 +23,7 @@ Run a single test file with `npx vitest run src/lib/data/projects.test.ts`.
 Personal portfolio: SvelteKit 2 + Svelte 5 + TypeScript + Tailwind CSS v4, deployed with `@sveltejs/adapter-vercel`.
 
 - Fully prerendered (`src/routes/+layout.ts` sets `prerender = true`). Routes: `/` and `/work/[slug]`, plus a prerendered `/sitemap.xml`.
-- Content lives in `src/lib/data/` (`profile.ts`, `experience.ts`, `skills.ts`, `projects.ts`). Components render that data and hold no copy of their own. To add a case study, append to `projects` and add a 1200×900 cover at `static/images/work-<name>.webp`; the page, home card, sitemap entry and prerender entry follow automatically.
+- Content lives in `src/lib/data/` (`profile.ts`, `experience.ts`, `skills.ts`, `projects.ts`). Components render that data and hold no copy of their own. To add a case study, append to `projects` and add a 1200×900 cover at `static/images/work-<name>.webp` (personal projects may also list 1440×900 screenshots in `shots`; professional work never has screenshots); the page, home card, sitemap entry and prerender entry follow automatically.
 - `src/routes/+page.svelte` stacks section components from `src/lib/components/` in page order. Navbar links resolve to `/#about`, `/#experience`, `/#works`, `/#contact` and must match the `id` on each section root. Pages without a photo hero pass `solid` to `Navbar`.
 - The "download cv" button renders only when `static/cv.pdf` exists; `src/routes/+page.server.ts` checks at build time.
 - No client names, no phone number, and no runtime requests to third-party font or image hosts. Fonts come from `@fontsource`; images are in `static/images/`.
