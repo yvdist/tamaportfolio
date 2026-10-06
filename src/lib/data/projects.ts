@@ -40,7 +40,7 @@ export const projects: Project[] = [
 			"Each kiosk knows where it stands, so every route starts from its own position. A signed QR code hands the route over to the visitor's phone, and the interface runs in English, Malay and Chinese."
 		],
 		outcome: [
-			'Built for a major retail group in Malaysia; one installation serves more than one mall.',
+			'Live in production across several malls of a major retail group in Malaysia, served from one installation.',
 			'Wayfinding in 2D and 3D across seven floors, from kiosks and phones.',
 			'Routing, geometry and the editors are covered by PHPUnit and Vitest suites.'
 		],
@@ -52,9 +52,9 @@ export const projects: Project[] = [
 		title: 'HRIS Platform',
 		summary:
 			'An internal HR platform built from the ground up, covering the working life of around 80 employees.',
-		period: '2025 – 2026',
+		period: '2024 – 2026',
 		role: 'Full-stack engineer, UI and backend',
-		stack: ['PHP', 'Laravel', 'Angular', 'TypeScript', 'MySQL', 'REST API'],
+		stack: ['PHP', 'Laravel', 'Angular', 'Ionic', 'TypeScript', 'MySQL'],
 		problem:
 			'The company needed one internal home for day-to-day HR operations: attendance, leave, KPI monitoring, payslips, the org chart and employee profiles.',
 		approach: [
@@ -74,9 +74,9 @@ export const projects: Project[] = [
 		title: 'Recruitment Platform',
 		summary:
 			'A hiring platform for internal and external recruitment, with AI that reads uploaded CVs.',
-		period: '2025 – 2026',
+		period: '2024 – 2026',
 		role: 'Full-stack engineer',
-		stack: ['PHP', 'Laravel', 'Angular', 'TypeScript', 'MySQL', 'OpenAI API'],
+		stack: ['PHP', 'Laravel', 'Angular', 'Ionic', 'TypeScript', 'MySQL', 'OpenAI API'],
 		problem:
 			'CVs arrive as unstructured documents. Candidate biodata, work history and skills had to be pulled out of each one before a recruiter could work with it.',
 		approach: [
