@@ -2,7 +2,6 @@
 	import '@fontsource/eb-garamond/400.css';
 	import '@fontsource/eb-garamond/400-italic.css';
 	import '@fontsource/eb-garamond/500.css';
-	import '@fontsource/shippori-mincho/400.css';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 

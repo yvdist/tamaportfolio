@@ -10,6 +10,17 @@
 	--font-mincho: 'Shippori Mincho', 'EB Garamond', serif;
 }
 
+/* Katakana-only subset of Shippori Mincho (U+30A0-30FF), used for the hero accent line.
+   The full family ships 120+ unicode-range faces, which made the stylesheet render-blocking. */
+@font-face {
+	font-family: 'Shippori Mincho';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url('/fonts/shippori-mincho-katakana.woff2') format('woff2');
+	unicode-range: U+30A0-30FF;
+}
+
 @layer base {
 	* {
 		-webkit-font-smoothing: antialiased;

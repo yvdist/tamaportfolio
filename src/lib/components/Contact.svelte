@@ -9,7 +9,7 @@
 
 <section id="contact" class="px-8 py-32 md:py-44">
 	<div use:reveal class="mx-auto max-w-[800px] text-center">
-		<h2 class="mb-10 font-sans text-[11px] tracking-[0.3em] text-charcoal/60 uppercase">contact</h2>
+		<h2 class="mb-10 font-sans text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">contact</h2>
 		<p class="mb-6 font-serif text-[28px] leading-[1.4] text-charcoal/90 md:text-[36px]">
 			Let's build something together
 		</p>
