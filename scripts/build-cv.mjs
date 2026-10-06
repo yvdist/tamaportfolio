@@ -2,6 +2,7 @@
 //   static/cv.pdf                                   public, contact details marked data-private removed
 //   .hiddendocs/cv/Yudistira-Eka-Pratama-CV.pdf     for applications, includes the phone number
 // The phone number is read from .hiddendocs/cv-private.json, which is git-ignored.
+// With --source and --out it builds one tailored variant instead (see below).
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
@@ -39,11 +40,33 @@ function print(html, output) {
 	console.log(`wrote ${output}`);
 }
 
+const phone = existsSync(privateFile)
+	? JSON.parse(readFileSync(privateFile, 'utf8')).phone
+	: undefined;
+const withPhone = (html) => html.replaceAll('{{PHONE}}', phone);
+
+// A tailored variant: node scripts/build-cv.mjs --source <cv.html> --out <cv.pdf>
+// builds only that file and leaves the master PDFs alone.
+const arg = (name) => {
+	const i = process.argv.indexOf(name);
+	return i === -1 ? undefined : process.argv[i + 1];
+};
+const variantSource = arg('--source');
+const variantOut = arg('--out');
+
+if (variantSource || variantOut) {
+	if (!variantSource || !variantOut || !phone) {
+		console.error(`Usage: --source <cv.html> --out <cv.pdf> (needs ${privateFile})`);
+		process.exit(1);
+	}
+	print(withPhone(readFileSync(variantSource, 'utf8')), variantOut);
+	process.exit(0);
+}
+
 print(source.replace(privateSpan, ''), 'static/cv.pdf');
 
-if (existsSync(privateFile)) {
-	const { phone } = JSON.parse(readFileSync(privateFile, 'utf8'));
-	print(source.replaceAll('{{PHONE}}', phone), '.hiddendocs/cv/Yudistira-Eka-Pratama-CV.pdf');
+if (phone) {
+	print(withPhone(source), '.hiddendocs/cv/Yudistira-Eka-Pratama-CV.pdf');
 } else {
 	console.log(`skipped the application copy: ${privateFile} not found`);
 }
