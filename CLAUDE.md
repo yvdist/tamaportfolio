@@ -12,6 +12,7 @@ npm run check     # svelte-kit sync + svelte-check (type checking)
 npm run lint      # prettier --check . && eslint .
 npm run format    # prettier --write .
 npm test          # vitest run (data integrity tests in src/**/*.test.ts)
+npm run cv        # build static/cv.pdf (public) and the private application copy from cv/cv.html
 ```
 
 Run a single test file with `npx vitest run src/lib/data/projects.test.ts`.
@@ -26,6 +27,7 @@ Personal portfolio: SvelteKit 2 + Svelte 5 + TypeScript + Tailwind CSS v4, deplo
 - Content lives in `src/lib/data/` (`profile.ts`, `experience.ts`, `skills.ts`, `projects.ts`). Components render that data and hold no copy of their own. To add a case study, append to `projects` and add a 1200×900 cover at `static/images/work-<name>.webp` (personal projects may also list 1440×900 screenshots in `shots`; professional work never has screenshots); the page, home card, sitemap entry and prerender entry follow automatically.
 - `src/routes/+page.svelte` stacks section components from `src/lib/components/` in page order. Navbar links resolve to `/#about`, `/#experience`, `/#works`, `/#contact` and must match the `id` on each section root. Pages without a photo hero pass `solid` to `Navbar`.
 - The "download cv" button renders only when `static/cv.pdf` exists; `src/routes/+page.server.ts` checks at build time.
+- The CV has one source, `cv/cv.html`, printed to PDF by `scripts/build-cv.mjs` using the locally installed Chrome. Anything inside `<span data-private>` is stripped from the public PDF; the phone number comes from the git-ignored `.hiddendocs/cv-private.json` and must never be committed. Keep `cv/cv.html` and `src/lib/data/` telling the same story (titles, dates, claims).
 - No client names, no phone number, and no runtime requests to third-party font or image hosts. Fonts come from `@fontsource`; images are in `static/images/`.
 - ESLint enforces `svelte/no-navigation-without-resolve`: internal links use `resolve()` from `$app/paths`; external links go through `ExternalLink.svelte`, which holds the one suppression.
 
