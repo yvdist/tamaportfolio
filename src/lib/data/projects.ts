@@ -22,14 +22,39 @@ export interface AlsoLink {
 
 export const projects: Project[] = [
 	{
+		slug: 'interactive-mall-directory',
+		kind: 'professional',
+		title: 'Interactive Mall Directory',
+		summary:
+			'A touchscreen wayfinding system for shopping malls: search for a store and watch the route drawn across floors, in 2D or 3D.',
+		period: '2026',
+		role: 'Lead engineer, backend and frontend',
+		stack: ['PHP', 'Laravel', 'Alpine.js', 'Leaflet', 'three.js', 'React', 'TypeScript', 'MySQL'],
+		problem:
+			'Visitors to a large multi-floor mall need to find a store and get there, from a kiosk or from their own phone. The mall team, in turn, needs to keep floors, tenants and routes current without calling an engineer.',
+		approach: [
+			'Routes are computed on the server with Dijkstra over a graph of waypoints and corridors. A multi-floor route travels through lifts, escalators and stairs weighted by travel time, never passes through the same floor twice, and skips any corridor segment that would cut through a unit.',
+			'The default view is a 2D map built on Leaflet, with search on an on-screen keyboard, category browsing and one-tap routes to the nearest facility. The route is drawn and animated floor by floor.',
+			'A 3D view built with three.js is extruded from the same floor plans and loaded only when opened, with a walking character following the route. Geometry is merged and labels come from a single texture atlas, so it holds up on kiosk hardware.',
+			'The admin panel lets the mall team do the rest themselves: a visual waypoint and corridor editor, an inter-floor connection manager, a 3D geometry editor, a floor-plan designer, tenant, advertisement and kiosk management, and an application health dashboard.',
+			"Each kiosk knows where it stands, so every route starts from its own position. A signed QR code hands the route over to the visitor's phone, and the interface runs in English, Malay and Chinese."
+		],
+		outcome: [
+			'Built for a major retail group in Malaysia; one installation serves more than one mall.',
+			'Wayfinding in 2D and 3D across seven floors, from kiosks and phones.',
+			'Routing, geometry and the editors are covered by PHPUnit and Vitest suites.'
+		],
+		cover: '/images/work-directory.webp'
+	},
+	{
 		slug: 'hris-platform',
 		kind: 'professional',
 		title: 'HRIS Platform',
 		summary:
 			'An internal HR platform built from the ground up, covering the working life of around 80 employees.',
-		period: '2024 – present',
+		period: '2025 – 2026',
 		role: 'Full-stack engineer, UI and backend',
-		stack: ['PHP', 'Laravel', 'TypeScript', 'SvelteKit', 'MySQL', 'REST API'],
+		stack: ['PHP', 'Laravel', 'Angular', 'TypeScript', 'MySQL', 'REST API'],
 		problem:
 			'The company needed one internal home for day-to-day HR operations: attendance, leave, KPI monitoring, payslips, the org chart and employee profiles.',
 		approach: [
@@ -49,9 +74,9 @@ export const projects: Project[] = [
 		title: 'Recruitment Platform',
 		summary:
 			'A hiring platform for internal and external recruitment, with AI that reads uploaded CVs.',
-		period: '2024 – present',
+		period: '2025 – 2026',
 		role: 'Full-stack engineer',
-		stack: ['PHP', 'Laravel', 'TypeScript', 'SvelteKit', 'MySQL', 'OpenAI API'],
+		stack: ['PHP', 'Laravel', 'Angular', 'TypeScript', 'MySQL', 'OpenAI API'],
 		problem:
 			'CVs arrive as unstructured documents. Candidate biodata, work history and skills had to be pulled out of each one before a recruiter could work with it.',
 		approach: [
@@ -62,46 +87,25 @@ export const projects: Project[] = [
 		cover: '/images/work-recruitment.webp'
 	},
 	{
-		slug: 'ai-conversation-classification',
-		kind: 'professional',
-		title: 'Conversation Classification at Scale',
-		summary:
-			'A batch pipeline that classified more than 100,000 conversation records and cut AI API costs by over 90%.',
-		period: '2025 – present',
-		role: 'Senior software engineer',
-		stack: ['PHP', 'Laravel', 'OpenAI API', 'DeepSeek API', 'MySQL'],
-		problem:
-			'More than 100,000 conversation records had to be classified and mapped to the store each one belonged to, and the AI API bill for doing it was too high.',
-		approach: [
-			'Reworked classification into optimized batches instead of one call per record.',
-			'Eliminated redundant API calls.',
-			'Mapped each conversation accurately to its store context.'
-		],
-		outcome: [
-			'AI API operational costs reduced by over 90%.',
-			'100,000+ conversation records classified.'
-		],
-		cover: '/images/work-classification.webp'
-	},
-	{
 		slug: 'mall-ai-helper',
 		kind: 'professional',
-		title: 'AI Helper for a Retail Mall',
+		title: 'Mall AI Assistant',
 		summary:
-			"An AI assistant answering real-time questions from shoppers and staff at one of Malaysia's largest retail malls.",
-		period: '2025 – present',
-		role: 'Senior software engineer',
+			'A conversational assistant that answers shoppers and staff about tenants, locations and services at a large retail mall.',
+		period: '2026',
+		role: 'Engineer, backend and AI',
 		stack: ['PHP', 'Laravel', 'OpenAI API', 'RAG', 'Prompt Engineering', 'MySQL'],
 		problem:
-			'Shoppers and staff at a very large mall ask questions in natural language and expect an accurate answer immediately.',
+			'Some questions do not fit a map. Shoppers and staff ask them in their own words and expect a correct answer straight away.',
 		approach: [
-			'Built the AI Helper to handle real-time NLP-based queries.',
-			'Integrated and managed LLM APIs inside a scalable Laravel backend.',
-			'Used retrieval over indexed documents as the context source, and tuned for consistent responses, instruction following, prompt-abuse prevention and accurate intent handling.'
+			'Built the assistant to handle natural-language questions about tenants, locations and services.',
+			"Answers are grounded in the mall's own data and indexed documents through retrieval, not in what the model happens to remember.",
+			'Prompts are tuned for consistent answers, for following instructions closely and for refusing attempts at prompt abuse.',
+			'The assistant is embedded in the Interactive Mall Directory as a chat panel.'
 		],
 		outcome: [
-			'In use by shoppers and staff for real-time queries.',
-			'Document-grounded answers significantly reduced hallucinations.'
+			'Used by shoppers and staff alongside the directory.',
+			'Grounding answers in documents reduced hallucinated replies.'
 		],
 		cover: '/images/work-mall.webp'
 	},

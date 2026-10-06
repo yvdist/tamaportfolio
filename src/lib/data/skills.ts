@@ -13,18 +13,32 @@ export const skills: SkillGroup[] = [
 		items: [
 			'TypeScript',
 			'JavaScript',
-			'SvelteKit',
+			'React',
+			'Next.js',
+			'Svelte / SvelteKit',
 			'Angular',
 			'Ionic',
-			'React.js',
-			'Next.js',
+			'Alpine.js',
+			'three.js',
+			'Leaflet',
 			'Tailwind CSS'
 		]
 	},
 	{
-		label: 'AI & LLM',
-		items: ['OpenAI API', 'DeepSeek API', 'RAG', 'LLM Fine-Tuning', 'Prompt Engineering', 'NLP']
+		label: 'AI',
+		items: [
+			'OpenAI',
+			'Anthropic Claude',
+			'Google Gemini',
+			'DeepSeek',
+			'RAG',
+			'Prompt Engineering',
+			'OCR & document processing'
+		]
 	},
 	{ label: 'Mobile', items: ['Dart', 'Flutter', 'GetX', 'BLoC'] },
-	{ label: 'Tools', items: ['Git', 'GitHub', 'GitLab', 'Algolia', 'SFTP Integration', 'Golang'] }
+	{
+		label: 'Tools',
+		items: ['Git', 'GitHub', 'GitLab CI', 'Docker', 'PHPUnit', 'Vitest', 'Playwright', 'Algolia']
+	}
 ];

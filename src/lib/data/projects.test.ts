@@ -5,9 +5,9 @@ import { alsoBuilt, getProject, projects } from './projects';
 describe('projects data', () => {
 	it('lists the six case studies in display order', () => {
 		expect(projects.map((p) => p.slug)).toEqual([
+			'interactive-mall-directory',
 			'hris-platform',
 			'recruitment-platform',
-			'ai-conversation-classification',
 			'mall-ai-helper',
 			'petakin',
 			'kikoeru-lab'
@@ -67,6 +67,18 @@ describe('projects data', () => {
 				expect(shot.alt.length, shot.src).toBeGreaterThan(10);
 				expect(existsSync(`static${shot.src}`), shot.src).toBe(true);
 			}
+		}
+	});
+
+	it('never names the client or overstates the mall directory', () => {
+		const all = JSON.stringify(projects);
+		for (const banned of ['AEON', 'Aeon', '90%']) {
+			expect(all.includes(banned), banned).toBe(false);
+		}
+
+		const directory = JSON.stringify(getProject('interactive-mall-directory'));
+		for (const banned of ['A*', 'turn-by-turn', 'role-based', 'offline', 'Docker']) {
+			expect(directory.includes(banned), banned).toBe(false);
 		}
 	});
 });
