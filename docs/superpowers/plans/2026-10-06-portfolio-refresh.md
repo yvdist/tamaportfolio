@@ -847,7 +847,7 @@ Links are root-relative (`/#about`) so they work from case-study pages. `solid` 
 	<div
 		class="absolute inset-0 flex flex-col items-center justify-center px-8 text-center text-white"
 	>
-		<p lang="ja" class="font-mincho mb-8 text-[13px] tracking-[0.5em] opacity-80">
+		<p lang="ja" class="mb-8 font-mincho text-[13px] tracking-[0.5em] opacity-80">
 			ソフトウェアエンジニア
 		</p>
 		<h1 class="mb-6 font-serif text-[40px] leading-[1.15] md:text-[68px]">{profile.name}</h1>
