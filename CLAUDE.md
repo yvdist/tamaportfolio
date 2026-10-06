@@ -6,6 +6,11 @@ Before changing content, read `.hiddendocs/PROJECT_LOG.md` if it exists. It is a
 
 `.hiddendocs/` is ignored by this repository and is its own git repository with a private remote. After updating the log or anything else in that folder, commit it there (`git -C .hiddendocs add -A && git -C .hiddendocs commit -m "..."`) and ask the owner to push. On a fresh clone the folder is absent; the owner restores it by cloning the private repository into `.hiddendocs`.
 
+## Ground rules
+
+- Commits and pull requests are authored by the repository owner only. Do not add co-author trailers or tool attributions to commit messages or PR descriptions.
+- Never name a client, and never add screenshots of client work. Screenshots are for personal projects only.
+
 ## Commands
 
 ```sh
