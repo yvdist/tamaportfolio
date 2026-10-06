@@ -1,6 +1,10 @@
+<script lang="ts">
+	import { photo } from '$lib/data/photos';
+</script>
+
 <section class="relative h-[60vh] w-full overflow-hidden md:h-[75vh]" aria-hidden="true">
 	<img
-		src="/images/interlude.webp"
+		src={photo('interlude.webp')}
 		alt=""
 		width="2000"
 		height="1125"
