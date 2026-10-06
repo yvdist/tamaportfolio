@@ -2,6 +2,8 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+Before changing content, read `.hiddendocs/PROJECT_LOG.md` if it exists. It is a local-only, git-ignored log of content decisions, their reasons and open items, and should be updated whenever something ships.
+
 ## Commands
 
 ```sh
