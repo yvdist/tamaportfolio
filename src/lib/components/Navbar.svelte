@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { resolve } from '$app/paths';
+	import ThemeToggle from '$lib/components/ThemeToggle.svelte';
 	import { profile } from '$lib/data/profile';
 
 	let { solid = false }: { solid?: boolean } = $props();
@@ -34,30 +35,34 @@
 			{profile.name.toLowerCase()}
 		</a>
 
-		<div class="hidden gap-10 text-[11px] tracking-[0.3em] uppercase md:flex">
-			{#each links as link (link.hash)}
-				<a
-					href="{resolve('/')}{link.hash}"
-					class="transition-opacity hover:opacity-100 {filled
-						? 'text-charcoal/70'
-						: 'text-white/85'}"
-				>
-					{link.label}
-				</a>
-			{/each}
-		</div>
+		<div class="flex items-center gap-8 md:gap-10">
+			<div class="hidden gap-10 text-[11px] tracking-[0.3em] uppercase md:flex">
+				{#each links as link (link.hash)}
+					<a
+						href="{resolve('/')}{link.hash}"
+						class="transition-opacity hover:opacity-100 {filled
+							? 'text-charcoal/70'
+							: 'text-white/85'}"
+					>
+						{link.label}
+					</a>
+				{/each}
+			</div>
 
-		<button
-			type="button"
-			aria-expanded={menuOpen}
-			aria-controls="mobile-menu"
-			onclick={() => (menuOpen = !menuOpen)}
-			class="text-[11px] tracking-[0.3em] uppercase md:hidden {filled
-				? 'text-charcoal'
-				: 'text-white'}"
-		>
-			{menuOpen ? 'close' : 'menu'}
-		</button>
+			<ThemeToggle class={filled ? 'text-charcoal' : 'text-white'} />
+
+			<button
+				type="button"
+				aria-expanded={menuOpen}
+				aria-controls="mobile-menu"
+				onclick={() => (menuOpen = !menuOpen)}
+				class="text-[11px] tracking-[0.3em] uppercase md:hidden {filled
+					? 'text-charcoal'
+					: 'text-white'}"
+			>
+				{menuOpen ? 'close' : 'menu'}
+			</button>
+		</div>
 	</div>
 
 	{#if menuOpen}
