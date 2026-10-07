@@ -3,18 +3,23 @@
 	import { Github, Linkedin } from 'lucide-svelte';
 	import { reveal } from '$lib/actions/reveal';
 	import { profile } from '$lib/data/profile';
+	import { i18n } from '$lib/i18n';
 
 	let { hasCv }: { hasCv: boolean } = $props();
+
+	const t = $derived(i18n.t.contact);
 </script>
 
 <section id="contact" class="px-8 py-32 md:py-44">
 	<div use:reveal class="mx-auto max-w-[800px] text-center">
-		<h2 class="mb-10 font-sans text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">contact</h2>
+		<h2 class="mb-10 font-sans text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">
+			{t.heading}
+		</h2>
 		<p class="mb-6 font-serif text-[28px] leading-[1.4] text-charcoal/90 md:text-[36px]">
-			Let's build something together
+			{t.title}
 		</p>
 		<p class="mb-14 text-[15px] leading-[2] text-charcoal/75">
-			Open to senior full-stack roles, on-site in Jakarta or remote.
+			{t.availability}
 		</p>
 
 		<a
@@ -48,7 +53,7 @@
 				href={profile.cvPath}
 				class="mt-16 inline-block border border-charcoal/30 px-10 py-4 text-[11px] tracking-[0.3em] text-charcoal/80 uppercase transition-colors hover:bg-charcoal hover:text-cream"
 			>
-				download cv
+				{t.cv}
 			</ExternalLink>
 		{/if}
 	</div>

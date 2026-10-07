@@ -2,20 +2,24 @@
 	import ExternalLink from '$lib/components/ExternalLink.svelte';
 	import { resolve } from '$app/paths';
 	import { reveal } from '$lib/actions/reveal';
-	import { alsoBuilt, projects } from '$lib/data/projects';
+	import { i18n } from '$lib/i18n';
+
+	const projects = $derived(i18n.content.projects);
+	const alsoBuilt = $derived(i18n.content.alsoBuilt);
+	const t = $derived(i18n.t.work);
 </script>
 
 <section id="works" class="px-6 py-32 md:px-8 md:py-40">
 	<div class="mx-auto max-w-[1200px]">
 		<h2 class="mb-20 text-center font-sans text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">
-			selected work
+			{t.heading}
 		</h2>
 
 		<div class="grid gap-x-12 gap-y-20 md:grid-cols-2">
 			{#each projects as project, i (project.slug)}
 				<a
 					use:reveal={(i % 2) * 150}
-					href={resolve('/work/[slug]', { slug: project.slug })}
+					href={resolve('/[[lang=lang]]/work/[slug]', { lang: i18n.lang, slug: project.slug })}
 					class="group block"
 				>
 					<div class="mb-6 aspect-4/3 overflow-hidden rounded-sm bg-sand/50">
@@ -29,7 +33,7 @@
 						/>
 					</div>
 					<p class="mb-3 text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">
-						{project.kind === 'personal' ? 'personal project' : 'professional work'} · {project.period}
+						{project.kind === 'personal' ? t.personal : t.professional} · {project.period}
 					</p>
 					<h3 class="mb-3 font-serif text-[26px] leading-[1.3] text-charcoal/90">
 						{project.title}
@@ -38,14 +42,14 @@
 					<p
 						class="mt-5 text-[11px] tracking-[0.3em] text-charcoal/75 uppercase transition-colors group-hover:text-charcoal"
 					>
-						read case study
+						{t.read}
 					</p>
 				</a>
 			{/each}
 		</div>
 
 		<div use:reveal class="mt-28 border-t border-warmgray/20 pt-12 text-center">
-			<p class="mb-8 text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">also built</p>
+			<p class="mb-8 text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">{t.alsoBuilt}</p>
 			<ul class="space-y-4">
 				{#each alsoBuilt as item (item.url)}
 					<li class="text-[15px]">

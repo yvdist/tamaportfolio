@@ -5,8 +5,14 @@
 	import './layout.css';
 	import { onNavigate } from '$app/navigation';
 	import favicon from '$lib/assets/favicon.svg';
+	import { i18n } from '$lib/i18n';
 
 	let { children } = $props();
+
+	// The server writes <html lang>; switching language in the browser has to update it here.
+	$effect(() => {
+		document.documentElement.lang = i18n.locale;
+	});
 
 	// Crossfade between pages where the browser supports view transitions; timing and the
 	// reduced-motion opt-out are in layout.css. In-page anchor jumps are left alone.

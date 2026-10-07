@@ -11,9 +11,11 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import Skills from '$lib/components/Skills.svelte';
 	import { photo } from '$lib/data/photos';
-	import { profile } from '$lib/data/profile';
+	import { i18n } from '$lib/i18n';
 
 	let { data } = $props();
+
+	const profile = $derived(i18n.content.profile);
 </script>
 
 <Seo title="{profile.name} · {profile.role}" description={profile.description} />
