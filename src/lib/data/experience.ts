@@ -27,7 +27,7 @@ export const experience: Experience[] = [
 					'Sole engineer in the AI-based project division, reporting to the CTO: planning, building and deploying AI-driven applications for clients and for the company.',
 					'Designed and built an interactive mall directory for a major retail group, now live in several malls: multi-floor wayfinding in 2D and 3D, with an admin panel the mall team runs themselves.',
 					"Built the company's first in-house product alone: a multi-tenant AI platform with a Laravel core and a Python agent service, serving assistants on web, Telegram and WhatsApp.",
-					'Lead engineer on an AI shopping assistant for store and mall kiosks, and built chat features, document pipelines with OCR, and retrieval-augmented assistants across OpenAI, Claude and Gemini.'
+					'Lead engineer on an AI shopping assistant for store and mall kiosks. Also built customer-service chatbots that read live business data, an employee assistant whose handbook answers cite their page numbers, and document pipelines with OCR, across OpenAI, Claude and Gemini.'
 				]
 			},
 			{
