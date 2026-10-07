@@ -41,7 +41,7 @@
 					<a
 						href="{resolve('/')}{link.hash}"
 						class="transition-opacity hover:opacity-100 {filled
-							? 'text-charcoal/70'
+							? 'text-charcoal/75'
 							: 'text-white/85'}"
 					>
 						{link.label}
@@ -72,7 +72,7 @@
 					<a
 						href="{resolve('/')}{link.hash}"
 						onclick={() => (menuOpen = false)}
-						class="text-charcoal/70 hover:text-charcoal"
+						class="text-charcoal/75 hover:text-charcoal"
 					>
 						{link.label}
 					</a>

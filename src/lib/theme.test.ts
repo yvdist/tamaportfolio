@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const css = readFileSync('src/routes/layout.css', 'utf8');
@@ -44,4 +44,15 @@ describe('theme palettes', () => {
 			expect(contrast(colors.charcoal, colors.cream, 0.75)).toBeGreaterThanOrEqual(4.5);
 		}
 	);
+
+	it('uses no charcoal text lighter than charcoal/75', () => {
+		const tooLight = readdirSync('src', { recursive: true, encoding: 'utf8' })
+			.filter((file) => file.endsWith('.svelte'))
+			.flatMap((file) =>
+				[...readFileSync(`src/${file}`, 'utf8').matchAll(/(?<![\w:-])text-charcoal\/(\d+)/g)]
+					.filter(([, alpha]) => Number(alpha) < 75)
+					.map(([match]) => `${file}: ${match}`)
+			);
+		expect(tooLight).toEqual([]);
+	});
 });

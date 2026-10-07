@@ -13,7 +13,7 @@
 		<p class="mb-6 font-serif text-[28px] leading-[1.4] text-charcoal/90 md:text-[36px]">
 			Let's build something together
 		</p>
-		<p class="mb-14 text-[15px] leading-[2] text-charcoal/70">
+		<p class="mb-14 text-[15px] leading-[2] text-charcoal/75">
 			Open to senior full-stack roles, on-site in Jakarta or remote.
 		</p>
 
@@ -29,14 +29,14 @@
 		>
 			<ExternalLink
 				href={profile.linkedin.url}
-				class="flex items-center gap-3 text-charcoal/70 transition-colors hover:text-charcoal"
+				class="flex items-center gap-3 text-charcoal/75 transition-colors hover:text-charcoal"
 			>
 				<Linkedin size={16} aria-hidden="true" />
 				<span>linkedin.com/in/{profile.linkedin.handle}</span>
 			</ExternalLink>
 			<ExternalLink
 				href={profile.github.url}
-				class="flex items-center gap-3 text-charcoal/70 transition-colors hover:text-charcoal"
+				class="flex items-center gap-3 text-charcoal/75 transition-colors hover:text-charcoal"
 			>
 				<Github size={16} aria-hidden="true" />
 				<span>github.com/{profile.github.handle}</span>

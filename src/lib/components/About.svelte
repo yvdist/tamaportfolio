@@ -11,7 +11,7 @@
 				<p
 					class={i === 0
 						? 'font-serif text-[20px] leading-[1.8] text-charcoal/90 md:text-[22px]'
-						: 'text-[15px] leading-[2.1] text-charcoal/70'}
+						: 'text-[15px] leading-[2.1] text-charcoal/75'}
 				>
 					{paragraph}
 				</p>

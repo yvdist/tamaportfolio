@@ -34,7 +34,7 @@
 					<h3 class="mb-3 font-serif text-[26px] leading-[1.3] text-charcoal/90">
 						{project.title}
 					</h3>
-					<p class="text-[15px] leading-[1.9] text-charcoal/70">{project.summary}</p>
+					<p class="text-[15px] leading-[1.9] text-charcoal/75">{project.summary}</p>
 					<p
 						class="mt-5 text-[11px] tracking-[0.3em] text-charcoal/75 uppercase transition-colors group-hover:text-charcoal"
 					>
