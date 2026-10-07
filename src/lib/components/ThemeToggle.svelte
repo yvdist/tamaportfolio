@@ -8,7 +8,14 @@
 	function toggle() {
 		const root = document.documentElement;
 		const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-		root.dataset.theme = theme;
+		// Crossfade the whole page, photographs included, where view transitions exist.
+		if (document.startViewTransition) {
+			document.startViewTransition(() => {
+				root.dataset.theme = theme;
+			});
+		} else {
+			root.dataset.theme = theme;
+		}
 		try {
 			localStorage.setItem('theme', theme);
 		} catch {

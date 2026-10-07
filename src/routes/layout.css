@@ -80,8 +80,22 @@
 	transform: none;
 }
 
+/* Page changes (onNavigate in +layout.svelte) and theme switches (ThemeToggle.svelte) run as
+   view transitions; this slows the default crossfade to match the fade-ins. */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 0.5s;
+	animation-timing-function: ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
+	}
+
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
 	}
 }
