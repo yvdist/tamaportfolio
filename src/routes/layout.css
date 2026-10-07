@@ -10,6 +10,10 @@
 	--font-mincho: 'Shippori Mincho', 'EB Garamond', serif;
 }
 
+/* The theme is the data-theme attribute on <html>, set before first paint by the inline script
+   in src/app.html and flipped by ThemeToggle.svelte. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
 /* Katakana-only subset of Shippori Mincho (U+30A0-30FF), used for the hero accent line.
    The full family ships 120+ unicode-range faces, which made the stylesheet render-blocking. */
 @font-face {
@@ -29,6 +33,17 @@
 
 	html {
 		scroll-behavior: smooth;
+		color-scheme: light;
+	}
+
+	/* The dark theme swaps the token values and keeps their names, so every bg-cream and
+	   text-charcoal utility follows: here cream is the dark background and charcoal the light text. */
+	:root[data-theme='dark'] {
+		color-scheme: dark;
+		--color-cream: #1c1a18;
+		--color-sand: #2b2826;
+		--color-warmgray: #8a857f;
+		--color-charcoal: #e8e4de;
 	}
 
 	body {
