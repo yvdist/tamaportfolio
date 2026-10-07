@@ -4,9 +4,10 @@ import { photo, PHOTO_SET } from './photos';
 import { alsoBuilt, getProject, projects } from './projects';
 
 describe('projects data', () => {
-	it('lists the six case studies in display order', () => {
+	it('lists the case studies in display order', () => {
 		expect(projects.map((p) => p.slug)).toEqual([
 			'interactive-mall-directory',
+			'multi-tenant-ai-platform',
 			'hris-platform',
 			'recruitment-platform',
 			'mall-ai-helper',

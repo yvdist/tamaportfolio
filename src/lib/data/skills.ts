@@ -6,7 +6,17 @@ export interface SkillGroup {
 export const skills: SkillGroup[] = [
 	{
 		label: 'Backend',
-		items: ['PHP', 'Laravel', 'Lumen', 'Node.js', 'Express.js', 'REST API', 'MySQL', 'JWT']
+		items: [
+			'PHP',
+			'Laravel',
+			'Lumen',
+			'Node.js',
+			'Express.js',
+			'Python (FastAPI)',
+			'REST API',
+			'MySQL',
+			'Redis'
+		]
 	},
 	{
 		label: 'Frontend',
@@ -32,6 +42,7 @@ export const skills: SkillGroup[] = [
 			'Google Gemini',
 			'DeepSeek',
 			'RAG',
+			'Qdrant',
 			'Prompt Engineering',
 			'OCR & document processing'
 		]
