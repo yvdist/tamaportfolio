@@ -49,24 +49,48 @@ export const projects: Project[] = [
 		cover: photo('work-directory.webp')
 	},
 	{
+		slug: 'multi-tenant-ai-platform',
+		kind: 'professional',
+		title: 'Multi-Tenant AI Platform',
+		summary:
+			'A platform that gives service and retail businesses their own AI assistant, connected to their branches, catalogue and bookings.',
+		period: '2026',
+		role: 'Sole engineer',
+		stack: ['PHP', 'Laravel', 'Python', 'FastAPI', 'Qdrant', 'Redis', 'Docker'],
+		problem:
+			'A clinic or a salon wants an assistant that answers customers on the web, Telegram and WhatsApp from its own data. Each business has to stay completely separate from the others.',
+		approach: [
+			'Split the system in two. A Laravel application is the system of record for tenants, branches, catalogues, bookings, complaints, FAQs and broadcasts. A separate Python service runs the reasoning agent and keeps no state of its own.',
+			'The agent reaches business data only by calling back into Laravel through tool endpoints signed with HMAC, so every answer passes the same tenant and role checks as the web application.',
+			'Retrieval runs on a vector database. Before choosing one, I built a small tool to compare two candidates on the same documents.',
+			'Guardrails keep the assistant on topic and refuse what falls outside a business, and answers stream to the customer as they are generated.'
+		],
+		outcome: [
+			"The company's first in-house product, designed and built by one engineer.",
+			'One assistant per business across web, Telegram and WhatsApp, with tenants isolated from each other.',
+			'Automated tests and evaluation reports on both the PHP and the Python side.'
+		],
+		cover: photo('work-platform.webp')
+	},
+	{
 		slug: 'hris-platform',
 		kind: 'professional',
 		title: 'HRIS Platform',
 		summary:
-			'An internal HR platform built from the ground up, covering the working life of around 80 employees.',
-		period: '2024 – 2026',
+			'An HR platform first built for a fashion retailer, then adapted into an internal HRIS for around 80 employees.',
+		period: '2024 – 2025',
 		role: 'Full-stack engineer, UI and backend',
 		stack: ['PHP', 'Laravel', 'Angular', 'Ionic', 'TypeScript', 'MySQL'],
 		problem:
-			'The company needed one internal home for day-to-day HR operations: attendance, leave, KPI monitoring, payslips, the org chart and employee profiles.',
+			'Two organisations needed one home for day-to-day HR: attendance, leave, KPI monitoring, payslips, the org chart and employee profiles. The second had its own way of working and its own look.',
 		approach: [
-			'Built the platform from the ground up, responsible for both the interface and the backend implementation.',
-			'Delivered the employee-facing modules: attendance tracking, leave management, KPI monitoring, payslip generation, org chart and profiles.',
-			'Developed a separate admin dashboard with role-based access control, employee and payslip management, and operational monitoring.'
+			'Built the HR modules for a fashion retailer in Malaysia: attendance tracking, leave management, KPI monitoring, payslip generation, org chart and profiles.',
+			"Adapted the same foundation into my own company's internal HRIS, reworking the flows and the design to fit how the company operates.",
+			'Delivered an employee-facing PWA in Angular and Ionic, and an admin dashboard with role-based access control, employee and payslip management, and operational monitoring.'
 		],
 		outcome: [
-			'Supports around 80 employees.',
-			'Attendance, leave, KPIs, payslips, org chart and profiles live in a single platform.'
+			'The internal HRIS supports around 80 employees.',
+			'Two organisations run on one shared foundation.'
 		],
 		cover: photo('work-hris.webp')
 	},
@@ -75,39 +99,41 @@ export const projects: Project[] = [
 		kind: 'professional',
 		title: 'Recruitment Platform',
 		summary:
-			'A hiring platform for internal and external recruitment, with AI that reads uploaded CVs.',
-		period: '2024 – 2026',
-		role: 'Full-stack engineer',
-		stack: ['PHP', 'Laravel', 'Angular', 'Ionic', 'TypeScript', 'MySQL', 'OpenAI API'],
+			'A job portal for a fashion retailer, built alone from an empty repository to production, where an uploaded CV fills in the candidate profile.',
+		period: '2024 – 2025',
+		role: 'Sole engineer',
+		stack: ['PHP', 'Laravel', 'Angular', 'TypeScript', 'MySQL', 'OpenAI API'],
 		problem:
-			'CVs arrive as unstructured documents. Candidate biodata, work history and skills had to be pulled out of each one before a recruiter could work with it.',
+			'Internal staff and outside applicants both needed one place to apply. A full profile covers biodata, experience, certifications, skills and education, which is slow to type out when most candidates already have it all in a PDF.',
 		approach: [
-			'Built the recruitment platform for both internal and external hiring.',
-			'Introduced AI-powered CV parsing that extracts candidate biodata, work history and skills from uploaded documents automatically.'
+			'Built the portal from scratch for both internal and external hiring.',
+			'Candidates can complete each section of their profile by hand, or upload their CV as a PDF and have the sections filled in for them to review.',
+			'The parsing step uses a language model to turn the unstructured document into structured profile data.'
 		],
-		outcome: ['Shipped and currently live in production.'],
+		outcome: ['Taken from nothing to live in production by one engineer.'],
 		cover: photo('work-recruitment.webp')
 	},
 	{
 		slug: 'mall-ai-helper',
 		kind: 'professional',
-		title: 'Mall AI Assistant',
+		title: 'AI Shopping Assistant for Kiosks',
 		summary:
-			'A conversational assistant that answers shoppers and staff about tenants, locations and services at a large retail mall.',
-		period: '2026',
-		role: 'Engineer, backend and AI',
-		stack: ['PHP', 'Laravel', 'OpenAI API', 'RAG', 'Prompt Engineering', 'MySQL'],
+			'An AI assistant on touchscreen kiosks that answers shoppers about products, promotions, tenants and events in stores and malls.',
+		period: '2025 – 2026',
+		role: 'Lead engineer since joining the project',
+		stack: ['PHP', 'Laravel', 'JavaScript', 'OpenAI API', 'DeepSeek API', 'RAG'],
 		problem:
-			'Some questions do not fit a map. Shoppers and staff ask them in their own words and expect a correct answer straight away.',
+			'Some questions do not fit a map or a catalogue. Shoppers and staff ask them in their own words, at a kiosk, and expect a correct answer straight away.',
 		approach: [
-			'Built the assistant to handle natural-language questions about tenants, locations and services.',
-			"Answers are grounded in the mall's own data and indexed documents through retrieval, not in what the model happens to remember.",
-			'Prompts are tuned for consistent answers, for following instructions closely and for refusing attempts at prompt abuse.',
-			'The assistant is embedded in the Interactive Mall Directory as a chat panel.'
+			'Answers stream to the screen as they are generated, with the system prompt and behaviour set per store.',
+			'Product search is combined with current promotion pricing, so answers quote promotional prices where they apply.',
+			'Scheduled scrapers keep mall promotions and events current, and one content area is answered through retrieval over indexed documents.',
+			'Prompts are tuned for consistent answers and for refusing attempts at prompt abuse, backed by a spam guard.',
+			'The assistant is also embedded in the Interactive Mall Directory as a chat panel.'
 		],
 		outcome: [
-			'Used by shoppers and staff alongside the directory.',
-			'Grounding answers in documents reduced hallucinated replies.'
+			'Used by shoppers and staff, with a separate configuration for each store.',
+			'Took over an existing codebase and became its main engineer.'
 		],
 		cover: photo('work-mall.webp')
 	},

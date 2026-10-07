@@ -24,18 +24,18 @@ export const experience: Experience[] = [
 				title: 'Software Engineer Specialist',
 				period: 'Mar 2026 – Present',
 				points: [
-					"Sole engineer in the AI-based project division, reporting to the CTO: planning, building and deploying AI-driven applications for clients and for the company's first in-house product.",
+					'Sole engineer in the AI-based project division, reporting to the CTO: planning, building and deploying AI-driven applications for clients and for the company.',
 					'Designed and built an interactive mall directory for a major retail group, now live in several malls: multi-floor wayfinding in 2D and 3D, with an admin panel the mall team runs themselves.',
-					'Built customer-service chatbots that read live business data, document pipelines combining OCR with language models, and retrieval-augmented assistants, across OpenAI, Claude and Gemini.',
-					'Refactored a conversation-classification job to batch requests and drop repeated calls, lowering token usage.'
+					"Built the company's first in-house product alone: a multi-tenant AI platform with a Laravel core and a Python agent service, serving assistants on web, Telegram and WhatsApp.",
+					'Lead engineer on an AI shopping assistant for store and mall kiosks, and built chat features, document pipelines with OCR, and retrieval-augmented assistants across OpenAI, Claude and Gemini.'
 				]
 			},
 			{
 				title: 'Senior Software Engineer',
 				period: 'Mar 2025 – Feb 2026',
 				points: [
-					'Took the internal HRIS to completion for around 80 employees: attendance, leave, KPIs, payslips and org chart, an employee PWA in Angular and Ionic, and an admin dashboard with role-based access.',
-					'Built a recruitment platform with AI-based CV parsing that reads candidate details, work history and skills from uploaded documents. Live in production.',
+					'Built a job portal for a fashion retailer alone, from an empty repository to production. Candidates fill in their profile by hand or have it filled from an uploaded CV.',
+					"Adapted the HR platform built for that client into the company's internal HRIS for around 80 employees, with an employee PWA in Angular and Ionic and an admin dashboard with role-based access.",
 					"Designed the architecture and technical workflow for new client projects, and reviewed teammates' code."
 				]
 			},
@@ -43,9 +43,9 @@ export const experience: Experience[] = [
 				title: 'Junior Software Engineer',
 				period: 'Jan 2024 – Feb 2025',
 				points: [
-					'Built features for a retail loyalty app and its admin dashboard: points, rewards and member tiers.',
-					'Worked on a merchandising application for a grocery client, covering inventory and stock workflows.',
-					'Started on the HRIS and recruitment platforms, taking on larger features over time, and helped with small maintenance on a custom ERP.'
+					"Joined a fashion retailer's ERP already well underway and worked across its modules, continuing into the senior role: procurement, vendor invoices, credit and debit notes, payroll, shift management and journal uploads.",
+					"Built features for the same retailer's loyalty app and its back office: points, rewards, raffles, birthday rewards and member tiers.",
+					'Worked on a merchandising application for a grocery client, covering inventory and stock workflows.'
 				]
 			}
 		],

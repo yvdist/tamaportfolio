@@ -115,49 +115,41 @@
 		<ul>
 			<li>
 				Sole engineer in the AI-based project division, reporting to the CTO. Plan, build and deploy
-				AI-driven applications for clients and for the company's first in-house product.
+				AI-driven applications for clients and for the company.
 			</li>
 			<li>
 				Designed and built an interactive mall directory for a major retail group in Malaysia, live
-				in production across several malls: server-side multi-floor routing (Dijkstra) through
-				lifts, escalators and stairs, a 2D map (Leaflet) and a 3D view (three.js), in English, Malay
-				and Chinese.
+				in production across several malls: server-side multi-floor routing (Dijkstra), a 2D map
+				(Leaflet), a 3D view (three.js) and an admin panel that mall staff run themselves.
 			</li>
 			<li>
-				Built the directory's admin panel so mall staff maintain it without engineering support:
-				visual waypoint editor, 3D geometry editor, floor-plan designer (React, TypeScript), and
-				tenant, advertisement and kiosk management.
+				Built the company's first in-house product alone: a multi-tenant AI platform with a Laravel
+				core and a Python (FastAPI) agent service, a Qdrant vector store, and assistants on web,
+				Telegram and WhatsApp.
 			</li>
 			<li>
-				Built customer-service chatbots for retail and service clients that read live business data
-				to answer questions.
+				Lead engineer on an AI shopping assistant for store and mall kiosks: streamed LLM answers
+				(OpenAI, DeepSeek) with per-store prompts, product search with promotion pricing, and
+				scheduled scrapers for promotions and events.
 			</li>
 			<li>
-				Implemented document-processing pipelines that combine OCR with language models for
-				extraction and classification, and retrieval-augmented (RAG) assistants over company
-				documents.
-			</li>
-			<li>
-				Integrated OpenAI, Anthropic Claude and Google Gemini behind Laravel backends, choosing the
-				provider per project. Refactored a conversation-classification job to batch requests and
-				remove repeated calls, lowering token usage.
+				Built AI chat features for an employee app, including handbook answers that cite page
+				numbers (RAG), document pipelines combining OCR with language models, and data imports that
+				feed sales chatbots.
 			</li>
 		</ul>
 
 		<h4>Senior Software Engineer <span class="meta">| Mar 2025 – Feb 2026</span></h4>
 		<ul>
 			<li>
-				Delivered mid-to-large client systems as an individual contributor using Laravel and
-				Angular, among them HRIS, recruitment, ERP, merchandising and loyalty.
+				Built a job portal for a fashion retailer alone, from an empty repository to production, for
+				internal and external hiring. Candidates fill in their profile by hand or have it filled
+				from an uploaded CV by AI-based parsing.
 			</li>
 			<li>
-				Took an internal HRIS to completion for about 80 employees: attendance, leave, KPI
-				monitoring, payslips and org chart, an employee PWA built with Angular and Ionic, and an
-				admin dashboard with role-based access control.
-			</li>
-			<li>
-				Built a recruitment platform with AI-based CV parsing that extracts candidate details, work
-				history and skills from uploaded documents. Live in production.
+				Adapted the HR platform built for that client into the company's internal HRIS for about 80
+				employees: attendance, leave, KPI monitoring, payslips and org chart, an employee PWA in
+				Angular and Ionic, and an admin dashboard with role-based access control.
 			</li>
 			<li>
 				Designed system architecture and technical workflows for new projects, and guided teammates
@@ -168,16 +160,17 @@
 		<h4>Junior Software Engineer <span class="meta">| Jan 2024 – Feb 2025</span></h4>
 		<ul>
 			<li>
-				Built features for a retail loyalty application and its admin dashboard: points, rewards and
-				member tiers.
+				Joined a fashion retailer's ERP (Laravel, Angular) already well underway and worked across
+				its modules, continuing into the senior role: procurement, vendor invoices, credit and debit
+				notes, payroll, shift management and journal uploads.
+			</li>
+			<li>
+				Built features for the same retailer's loyalty app and back office (Ionic, Angular, NgRx):
+				points, rewards, raffles and birthday rewards.
 			</li>
 			<li>
 				Worked on a merchandising application for a grocery client, covering inventory and stock
 				workflows.
-			</li>
-			<li>
-				Started on the HRIS and recruitment platforms in Laravel and Angular, taking on larger
-				features over time. Helped with small maintenance on a custom frameworkless ERP.
 			</li>
 		</ul>
 
@@ -240,9 +233,23 @@
 		</ul>
 
 		<h4>
+			Multi-Tenant AI Platform
+			<span class="meta"
+				>| In-house product, 2026 | Laravel, Python, FastAPI, Qdrant, Redis, Docker</span
+			>
+		</h4>
+		<ul>
+			<li>
+				Laravel is the system of record; a stateless Python agent calls back into it through
+				HMAC-signed tool endpoints, so every answer passes the same tenant and role checks.
+				Guardrails, streaming answers, and tests on both sides.
+			</li>
+		</ul>
+
+		<h4>
 			Petakin
 			<span class="meta"
-				>| Personal project, 2026 | Next.js, TypeScript, Python, FastAPI, OpenCV |
+				>| Personal project, 2026 | Next.js, TypeScript |
 				<a href="https://petakin.vercel.app">petakin.vercel.app</a></span
 			>
 		</h4>
@@ -263,23 +270,22 @@
 		<ul>
 			<li>
 				Collects user complaints from Hacker News and Reddit, extracts project ideas with Gemini,
-				and ranks them with a deterministic score computed in code. Daily ingestion by GitHub
-				Actions.
+				and ranks them with a deterministic score computed in code.
 			</li>
 		</ul>
 
 		<h2>Skills</h2>
 		<p>
-			<strong>Backend:</strong> PHP, Laravel, Lumen, Node.js, Express.js, REST API, MySQL, JWT,
-			Repository Pattern, OOP
+			<strong>Backend:</strong> PHP, Laravel, Lumen, Node.js, Express.js, Python (FastAPI), REST
+			API, MySQL, Redis, JWT, Repository Pattern, OOP
 		</p>
 		<p>
 			<strong>Frontend:</strong> TypeScript, JavaScript, React, Next.js, Svelte, SvelteKit, Angular,
 			Ionic, Alpine.js, three.js, Leaflet, Tailwind CSS
 		</p>
 		<p>
-			<strong>AI:</strong> OpenAI API, Anthropic Claude, Google Gemini, DeepSeek, RAG, Prompt
-			Engineering, OCR and document processing, chatbot development
+			<strong>AI:</strong> OpenAI API, Anthropic Claude, Google Gemini, DeepSeek, RAG, Qdrant,
+			pgvector, Prompt Engineering, OCR and document processing, chatbot development
 		</p>
 		<p><strong>Mobile:</strong> Dart, Flutter, BLoC, GetX</p>
 		<p>
