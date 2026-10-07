@@ -2,6 +2,7 @@
 	import ExternalLink from '$lib/components/ExternalLink.svelte';
 	import { photoCredit } from '$lib/data/photos';
 	import { profile } from '$lib/data/profile';
+	import { i18n } from '$lib/i18n';
 </script>
 
 <footer class="border-t border-warmgray/20 px-8 py-14">
@@ -11,7 +12,7 @@
 		<p>© {new Date().getFullYear()} {profile.name}</p>
 		{#if photoCredit}
 			<p>
-				Photographs via
+				{i18n.t.footer.photos}
 				<ExternalLink href={photoCredit.url} class="underline-offset-4 hover:underline">
 					{photoCredit.label}
 				</ExternalLink>

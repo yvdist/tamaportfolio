@@ -1,12 +1,14 @@
 <script lang="ts">
 	import { reveal } from '$lib/actions/reveal';
-	import { experience } from '$lib/data/experience';
+	import { i18n } from '$lib/i18n';
+
+	const experience = $derived(i18n.content.experience);
 </script>
 
 <section id="experience" class="px-8 py-32 md:py-40">
 	<div class="mx-auto max-w-[960px]">
 		<h2 class="mb-20 text-center font-sans text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">
-			experience
+			{i18n.t.experience.heading}
 		</h2>
 
 		<ol class="divide-y divide-warmgray/20">

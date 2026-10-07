@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Moon, Sun } from 'lucide-svelte';
+	import { i18n } from '$lib/i18n';
 
 	let { class: className = '' }: { class?: string } = $props();
 
@@ -26,7 +27,7 @@
 
 <button
 	type="button"
-	aria-label="switch colour theme"
+	aria-label={i18n.t.nav.theme}
 	onclick={toggle}
 	class="transition-opacity hover:opacity-70 {className}"
 >

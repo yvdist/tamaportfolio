@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { photo } from '$lib/data/photos';
-	import { profile } from '$lib/data/profile';
+	import { i18n } from '$lib/i18n';
+
+	const profile = $derived(i18n.content.profile);
 </script>
 
 <section class="relative h-svh w-full overflow-hidden">
@@ -27,7 +29,7 @@
 			href="#works"
 			class="border border-white/40 px-8 py-3 text-[11px] tracking-[0.3em] uppercase backdrop-blur-sm transition-all hover:bg-white/10"
 		>
-			selected work
+			{i18n.t.hero.cta}
 		</a>
 	</div>
 </section>

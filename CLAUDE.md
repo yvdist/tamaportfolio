@@ -33,15 +33,28 @@ Run a single test file with `npx vitest run src/lib/data/projects.test.ts`.
 
 Personal portfolio: SvelteKit 2 + Svelte 5 + TypeScript + Tailwind CSS v4, deployed with `@sveltejs/adapter-vercel`.
 
-- Fully prerendered (`src/routes/+layout.ts` sets `prerender = true`). Routes: `/` and `/work/[slug]`, plus a prerendered `/sitemap.xml`.
-- Content lives in `src/lib/data/` (`profile.ts`, `experience.ts`, `skills.ts`, `projects.ts`). Components render that data and hold no copy of their own. To add a case study, append to `projects`, add a 1200×900 cover named `work-<name>.webp` to the active photo set and reference it with `photo()`, then run `npm run og` (personal projects may also list 1440×900 screenshots in `shots`; professional work never has screenshots); the page, home card, sitemap entry and prerender entry follow automatically.
-- `src/routes/+page.svelte` stacks section components from `src/lib/components/` in page order. Navbar links resolve to `/#about`, `/#experience`, `/#works`, `/#contact` and must match the `id` on each section root. Pages without a photo hero pass `solid` to `Navbar`.
-- The "download cv" button renders only when `static/cv.pdf` exists; `src/routes/+page.server.ts` checks at build time.
+- Fully prerendered (`src/routes/+layout.ts` sets `prerender = true`). Routes: `/` and `/work/[slug]`, each also in Indonesian under `/id`, plus a prerendered `/sitemap.xml`.
+- Content lives in `src/lib/data/` (`profile.ts`, `experience.ts`, `skills.ts`, `projects.ts`) and interface strings in `src/lib/i18n/`. Components render those and hold no copy of their own. To add a case study, append to `projects`, add a 1200×900 cover named `work-<name>.webp` to the active photo set and reference it with `photo()`, then run `npm run og` (personal projects may also list 1440×900 screenshots in `shots`; professional work never has screenshots); then add its Indonesian text to `src/lib/data/id.ts`; the page, home card, sitemap entry and prerender entry follow automatically in both languages.
+- `src/routes/[[lang=lang]]/+page.svelte` stacks section components from `src/lib/components/` in page order. Navbar links resolve to `/#about`, `/#experience`, `/#works`, `/#contact` and must match the `id` on each section root. Pages without a photo hero pass `solid` to `Navbar`.
+- The "download cv" button renders only when `static/cv.pdf` exists; `src/routes/[[lang=lang]]/+page.server.ts` checks at build time.
 - The CV has one source, `cv/cv.html`, printed to PDF by `scripts/build-cv.mjs` using the locally installed Chrome. Anything inside `<span data-private>` is stripped from the public PDF; the phone number comes from the git-ignored `.hiddendocs/cv-private.json` and must never be committed. Keep `cv/cv.html` and `src/lib/data/` telling the same story (titles, dates, claims). A tailored copy for one application is built with `node scripts/build-cv.mjs --source <cv.html> --out <cv.pdf>`, which leaves the master PDFs untouched.
 - No client names, no phone number, and no runtime requests to third-party font or image hosts. Fonts are self-hosted; images are in `static/images/`.
 - Atmospheric photographs (hero, interlude, divider, case-study covers) live in interchangeable sets under `static/images/sets/<name>/` with identical file names. `src/lib/data/photos.ts` picks the set through `PHOTO_SET` and exposes `photo(name)`; never hard-code a path into a set. Screenshots (`shot-*`) and `static/og/` are not part of a set.
-- `src/routes/+error.svelte` is the 404 and error page.
+- `src/routes/+error.svelte` is the 404 and error page, in the language of the URL.
+- Vercel Web Analytics is injected in `src/routes/+layout.ts` in production builds only (same-origin script, page views, no cookies). Do not enable the package's development mode: it loads a script from a third-party host.
 - ESLint enforces `svelte/no-navigation-without-resolve`: internal links use `resolve()` from `$app/paths`; external links go through `ExternalLink.svelte`, which holds the one suppression.
+
+### Languages
+
+English is served at the root and Indonesian under `/id`, through the optional route param `[[lang=lang]]` (matcher in `src/params/lang.ts`). The CV and the social images exist in English only.
+
+- The locale always comes from the URL path: `localeOf()` in `src/lib/i18n/locale.ts`. `src/hooks.server.ts` writes it into `<html lang>`, and `+layout.svelte` keeps it current after a client-side switch.
+- Components read `i18n` from `$lib/i18n`: `i18n.t` (interface strings), `i18n.content` (profile, experience, projects), `i18n.lang` (the route param). Read them in markup or `$derived`, never a plain `const`: both languages share one mounted component tree.
+- Interface strings: `src/lib/i18n/en.ts` defines the `Messages` type and `id.ts` must satisfy it, so a missing string is a type error.
+- Content: the English data files stay the source of structure. `src/lib/data/id.ts` holds only the translated fields, keyed by slug, company or URL; `content.ts` merges them and throws when an entry is missing or has a different number of items. There is no fallback to English. Names, role titles, project titles, stacks and skills stay in English; periods are converted by `localizePeriod()`.
+- Internal links pass the language to a direct `resolve()` call with the route id, for example `resolve('/[[lang=lang]]/work/[slug]', { lang: i18n.lang, slug })`. The ESLint rule rejects wrappers around `resolve()`. Section ids (`#about`, `#works`) are the same in both languages.
+- `Seo.svelte` takes the English path and emits the canonical URL, `hreflang` alternates and `og:locale`; the sitemap lists both languages.
+- The Indonesian text follows the same content rules as the English text, and `src/lib/data/content.test.ts` applies the banned strings to it.
 
 ### Svelte syntax
 

@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { reveal } from '$lib/actions/reveal';
 	import { skills } from '$lib/data/skills';
+	import { i18n } from '$lib/i18n';
 </script>
 
 <section class="px-8 py-32">
 	<div class="mx-auto max-w-[960px]">
 		<h2 class="mb-20 text-center font-sans text-[11px] tracking-[0.3em] text-charcoal/75 uppercase">
-			stack
+			{i18n.t.skills.heading}
 		</h2>
 
 		<dl class="divide-y divide-warmgray/20">
