@@ -15,6 +15,8 @@ export const skills: SkillGroup[] = [
 			'Python (FastAPI)',
 			'REST API',
 			'MySQL',
+			'PostgreSQL',
+			'MongoDB',
 			'Redis'
 		]
 	},
@@ -47,7 +49,11 @@ export const skills: SkillGroup[] = [
 			'OCR & document processing'
 		]
 	},
-	{ label: 'Mobile', items: ['Dart', 'Flutter', 'GetX', 'BLoC'] },
+	{ label: 'Mobile', items: ['Dart', 'Flutter', 'React Native', 'GetX', 'BLoC'] },
+	{
+		label: 'AI coding tools',
+		items: ['Claude Code', 'Codex', 'OpenCode', 'Cursor', 'Antigravity']
+	},
 	{
 		label: 'Tools',
 		items: ['Git', 'GitHub', 'GitLab CI', 'Docker', 'PHPUnit', 'Vitest', 'Playwright', 'Algolia']
