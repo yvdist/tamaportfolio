@@ -55,7 +55,8 @@ export const skills: SkillGroup[] = [
 		items: ['Claude Code', 'Codex', 'OpenCode', 'Cursor', 'Antigravity']
 	},
 	{
-		label: 'Tools',
-		items: ['Git', 'GitHub', 'GitLab CI', 'Docker', 'PHPUnit', 'Vitest', 'Playwright', 'Algolia']
-	}
+		label: 'Infrastructure',
+		items: ['Docker', 'Docker Compose', 'AWS', 'GitLab CI', 'Vercel']
+	},
+	{ label: 'Tools', items: ['Git', 'GitHub', 'PHPUnit', 'Vitest', 'Playwright', 'Algolia'] }
 ];
